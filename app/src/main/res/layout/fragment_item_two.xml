@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/applayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+
+        >
+
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/search_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#ffffff"
+            android:contentInsetLeft="0dp"
+            android:contentInsetStart="0dp"
+            app:contentInsetLeft="0dp"
+            app:contentInsetStart="0dp">
+            <LinearLayout
+                android:id="@+id/tbll"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+
+                android:orientation="horizontal"
+                android:weightSum="1"
+                >
+
+
+                <AutoCompleteTextView
+                    android:id="@+id/searchmain"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.9"
+                    android:layout_height="45dp"
+                    android:background="@drawable/round_button"
+                    android:drawablePadding="0dp"
+                    android:focusableInTouchMode="true"
+                    android:hint="搜尋店舖／地址"
+                    android:imeOptions="actionGo"
+                    android:layout_gravity="center_vertical"
+                    android:singleLine="true"
+
+                    android:textAppearance="@style/normal"
+                    android:textColor="#aaaaaa"
+                    android:textColorHint="@color/dark_grey"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+
+
+                <ImageButton
+                    android:id="@+id/problem"
+                    android:layout_width="0dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="15dp"
+                    android:layout_weight="0.1"
+                    android:background="#00000000"
+                    android:bottomLeftRadius="5dp"
+                    android:bottomRightRadius="5dp"
+                    android:drawablePadding="0dp"
+                    android:tint="#346060"
+                    app:srcCompat="@drawable/ic_filter" />
+
+            </LinearLayout>
+        </android.support.v7.widget.Toolbar>
+
+
+
+
+    </android.support.design.widget.AppBarLayout>
+
+    <include layout="@layout/content_search_" />
+
+</android.support.design.widget.CoordinatorLayout>

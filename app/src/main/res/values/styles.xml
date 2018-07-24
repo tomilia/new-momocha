@@ -1,0 +1,73 @@
+<resources>
+
+    <style name="ColoredButton" parent="Widget.AppCompat.Button">
+        <item name="colorButtonNormal">#39b275</item>
+    </style>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="SmallRatingBar" parent="@android:style/Widget.Holo.RatingBar.Indicator">
+
+
+            <item name="colorControlNormal">@color/lightGrey</item>
+            <item name="colorControlActivated">@color/star_color</item>
+        <item name="android:maxHeight">20dp</item>
+        <item name="android:minHeight">20dp</item>
+
+    </style>
+
+    <style name="ThemeSpinner">
+        <!-- Color when pressed -->
+        <item name="colorAccent">#ffa000</item>
+        <!-- Default color for the dropdown arrow and line -->
+        <item name="colorControlNormal">#aaaaaa</item>
+    </style>
+
+    <style name="CustomTabText" parent="Base.Widget.Design.TabLayout">
+        <item name="tabTextAppearance">@style/MyTabLayoutTextAppearance</item>
+    </style>
+
+    <style name="MyTabLayoutTextAppearance" parent="TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse">
+        <item name="android:textSize">18sp</item>
+
+    </style>
+    <style name="AutoBar">
+
+        <item name="android:background">#000</item>
+    </style>
+    <style name="HashtagView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="tagTextSize">@dimen/regular_text</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <!-- font-->
+
+    <style name="normal" parent="android:TextAppearance">
+
+        <item name="fontPath">GenJyuuGothicL-Monospace-Normal.ttf</item>
+    </style>
+    <style name="extralight" parent="android:TextAppearance">
+
+        <item name="fontPath">GenJyuuGothicL-Monospace-ExtraLight.ttf</item>
+    </style>
+    <style name="Widget.BottomNavigationView" parent="Widget.Design.BottomNavigationView">
+        <item name="fontFamily">genjyuugothiclmonospacenormal.ttf</item>
+    </style>
+</resources>

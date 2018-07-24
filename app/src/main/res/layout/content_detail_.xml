@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    android:id="@+id/scrollView1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+<LinearLayout
+    android:id="@+id/content"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="top"
+    android:orientation="vertical">
+
+
+    <fragment
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/detail_frag"
+        android:name="com.example.tommylee.myapplication.detail.BasicInfoFrag"/>
+<LinearLayout
+    android:layout_marginTop="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimary">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:padding="20dp"
+        android:gravity="center">
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</LinearLayout>
+    <fragment
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:orientation="horizontal"
+        android:id="@+id/tabbed_frag"
+        android:name="com.example.tommylee.myapplication.detail.TabbedBottomFrag"/>
+
+</LinearLayout>
+</ScrollView>

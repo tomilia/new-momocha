@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FFFFFF</color>
+    <color name="colorPrimaryDark">#cccccc</color>
+    <color name="colorAccent">#40AFAF</color>
+    <color name="duskYellow">#F9F398</color>
+    <color name="lightGrey">#D3D3D3</color>
+    <color name="text">#0D745C</color>
+    <color name="starYellow">#FDE04A</color>
+    <color name="dark_grey">#ababab</color>
+    <color name="navy">#2c3f4c</color>
+    <color name="base">#a3c6a7</color>
+    <color name="star_color">#e28f26</color>
+</resources>

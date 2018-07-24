@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f5f5f5"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:showIn="@layout/fragment_item_two">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/table"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/hot"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/border"
+                android:text="熱門"
+                android:paddingLeft="8dp"
+                android:textColor="#346060"
+                android:textSize="16sp"
+                android:textAppearance="@style/normal"  />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
+                android:background="#00000000"
+                android:paddingBottom="5dp">
+
+                <com.greenfrvr.hashtagview.HashtagView
+                    android:id="@+id/hashtags1"
+                    style="@style/HashtagView"
+                    app:rowGravity="left"
+                    app:rowMargin="5dp"
+                    app:tagBackground="@drawable/tag_item"
+                    app:tagForeground="@drawable/flat_button_light"
+                    app:tagPaddingBottom="@dimen/padding_vertical"
+                    app:tagPaddingLeft="@dimen/padding_horizontal"
+                    app:tagPaddingRight="@dimen/padding_horizontal"
+                    app:tagPaddingTop="@dimen/padding_vertical"
+                    app:tagTextColor="#000000"
+                    app:tagTextSize="12dp" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/table2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/recent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
+                android:text="最近搜尋"
+                android:paddingLeft="8dp"
+                android:background="@drawable/border"
+                android:textColor="#346060"
+                android:textSize="16sp"
+                android:textAppearance="@style/normal" />
+
+            <ListView
+                android:id="@+id/resultrecent"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:clickable="true"
+                android:focusable="true" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="150dp"
+        android:progressDrawable="@drawable/circular_progress_bar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ListView
+        android:id="@+id/list_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout" />
+
+</android.support.constraint.ConstraintLayout>

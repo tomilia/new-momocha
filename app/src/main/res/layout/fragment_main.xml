@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:layout_weight="1">
+    <include layout="@layout/main_toolbar"/>
+
+    <android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_marginTop="50dp"
+        android:id="@+id/scrollLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/viewPager"
+                    android:layout_alignParentTop="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+                <LinearLayout
+                    android:id="@+id/Dots"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/viewPager"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:orientation="horizontal">
+
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/Secondrowbutton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/Dots"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="5dp">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:id="@+id/location_text">
+
+                        <TextView android:layout_width="match_parent"
+                            android:layout_height="wrap_content" android:text="熱門地點"
+                            android:drawablePadding="5dip"
+                            android:textColor="@color/text"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginLeft="4dp"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            />
+                    </LinearLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/locationrow"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/location_text"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="5dp"
+                        >
+
+
+                        <android.support.v7.widget.RecyclerView
+                            android:id="@+id/location_recycler_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+
+                    </RelativeLayout>
+                </LinearLayout>
+
+
+                <RelativeLayout
+                    android:id="@+id/Firstrow"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/Secondrowbutton"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="5dp"
+                    >
+
+
+
+
+                        <TextView android:layout_width="wrap_content"
+                            android:id="@+id/sp_text"
+                            android:layout_height="wrap_content" android:text="特別推介"
+                            android:textColor="@color/text"
+                            android:drawablePadding="5dip"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginLeft="4dp"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            />
+                        <android.support.v4.view.ViewPager
+                            android:id="@+id/myview"
+                            android:layout_below="@id/sp_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp" />
+
+
+                </RelativeLayout>
+                <RelativeLayout
+                    android:id="@+id/messageinforow"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/Firstrow"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="5dp"
+                    >
+
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/message_row_recycler_view"
+                        android:layout_below="@id/messagerowtext"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"/>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:id="@+id/messagerowtext"
+                        android:layout_height="wrap_content">
+                        <TextView android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" android:text="按摩滋訊"
+                            android:textColor="@color/text"
+                            android:drawablePadding="5dip"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginLeft="4dp"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            />
+                    </LinearLayout>
+                </RelativeLayout>
+                <RelativeLayout
+                    android:id="@+id/card"
+                    android:gravity="bottom"
+                    android:layout_below="@id/messageinforow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="20dp">
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/recycler_view2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="30dp">
+                    </android.support.v7.widget.RecyclerView>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                    <TextView android:id="@android:id/empty" android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:text="今期流行"
+                        android:textSize="16sp"
+                        android:textColor="@color/text"
+                        android:drawablePadding="5dip"
+                        android:textStyle="bold"
+                      />
+                    </LinearLayout>
+                </RelativeLayout>
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+
+</android.support.design.widget.CoordinatorLayout>

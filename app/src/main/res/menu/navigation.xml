@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/side_menu">
+
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="首頁"/>
+
+    <item
+        android:id="@+id/navigation_map"
+        android:icon="@drawable/ic_explore_black_24px"
+        android:title="地圖搜尋" />
+
+    <item
+        android:id="@+id/navigation_history"
+        android:icon="@drawable/ic_favorite_black_24px"
+        android:title="您的收藏庫" />
+    <item
+        android:id="@+id/traffic"
+        android:icon="@drawable/ic_highway"
+        android:title="交通一覽" />
+    <item
+        android:id="@+id/navigation_setting"
+        android:icon="@drawable/ic_settings_black_24px"
+        android:title="設定" />
+
+
+</menu>

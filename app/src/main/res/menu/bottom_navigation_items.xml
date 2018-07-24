@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_item1"
+        android:icon="@drawable/outline_explore_24px"
+        android:title="地圖"/>
+
+    <item
+        android:id="@+id/action_item2"
+        android:icon="@drawable/outline_search_24px"
+        android:title="搜尋"/>
+        />
+    <item
+        android:id="@+id/action_item3"
+        android:icon="@drawable/outline_home_24px"
+        android:title="主頁"/>
+    <item
+        android:id="@+id/action_item4"
+        android:icon="@drawable/outline_favorite_border_24px"
+        android:title="收藏"/>
+    <item
+        android:id="@+id/action_item5"
+        android:icon="@drawable/outline_assignment_ind_24px"
+        android:title="我的"/>
+</menu>
