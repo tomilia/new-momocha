@@ -42,4 +42,6 @@
      app:itemTextColor="@drawable/drawer_item_selector"
      android:layout_gravity="start"/>
 
+
+
 </android.support.v4.widget.DrawerLayout>

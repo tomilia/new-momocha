@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -21,6 +23,7 @@ import android.view.ViewGroup;
 
 import com.example.tommylee.myapplication.DataFetch;
 import com.example.tommylee.myapplication.FontChangeCrawler;
+import com.example.tommylee.myapplication.MainActivity;
 import com.example.tommylee.myapplication.OnListFragmentInteractionListener;
 import com.example.tommylee.myapplication.R;
 
@@ -39,9 +42,10 @@ import android.widget.LinearLayout;
 import android.support.v4.view.ViewPager;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.ViewFlipper;
 
 import com.example.tommylee.myapplication.Result_Page_Activity;
-import com.example.tommylee.myapplication.Search_Activity;
+
 import com.example.tommylee.myapplication.viewpager;
 
 import org.json.JSONArray;
@@ -53,6 +57,9 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -81,14 +88,14 @@ public class MainFragment extends Fragment {
     private ArrayList<String> ArticleTitle;
     private RecyclerView.Adapter locationAdapter;
     private RecyclerView.LayoutManager locationLayoutManager;
-
+    private Integer[] autoScrollImages={R.drawable.spa,R.drawable.spa1,R.drawable.spa2};
     private RecyclerView.LayoutManager mLayoutManager;
     private RecyclerView.LayoutManager mLayoutManager2;
-    ViewPager myviewPager;
     MainPromocardAdapter myAdapter;
     private DrawerLayout drawerLayout;
     private ArrayList<String> location;
-    ViewPager viewPager;
+    ViewPager viewPager;//slider
+    ViewPager myviewPager;//promoting card
     private ArrayList<DataFetch> mDataset;
     private ArrayList<DataFetch> mDataset2;
     LinearLayout dots;
@@ -97,9 +104,28 @@ public class MainFragment extends Fragment {
     private ImageView searchbarbutton;
     private int Imagerow[];
     private int ArticleImagerow[];
+    private Handler mHandler = new Handler() {// 定时轮播图片，需要在主线程里面修改UI
+        @Override
+        public void handleMessage(Message msg) {
+            if (msg.what == UPDATE_PAGER) {
+                Log.d("msgsgs",String.valueOf(msg.arg1));
+                if (msg.arg1 != 0) {
+                    viewPager.setCurrentItem(msg.arg1);
+                } else {
+                    // 当从末页调到首页时，不显示翻页动画效果 false
+                    viewPager.setCurrentItem(msg.arg1, true);
+                }
+            }
+        }
+    };
+
     // TODO: Rename and change types of parameters
     int[] locationimage;
-
+    //time
+    private static final int UPDATE_PAGER = 0;// 更新图片标记
+    private int currentIndex = 0;// 设置当前第几个图片被选中
+    private Timer timer = new Timer();// 为了方便取消定时轮播，将 Timer 设为全局
+    //time
 
     private OnListFragmentInteractionListener mListener;
     public MainFragment() {
@@ -110,8 +136,8 @@ public class MainFragment extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
+     * @param /param1 Parameter 1.
+     * @param /param2 Parameter 2.
      * @return A new instance of fragment MainFragment.
      */
     // TODO: Rename and change types and number of parameters
@@ -137,12 +163,12 @@ public class MainFragment extends Fragment {
         FontChangeCrawler fontChanger = new FontChangeCrawler(getActivity().getAssets(), "GenJyuuGothicL-Monospace-ExtraLight.ttf");
         fontChanger.replaceFonts((ViewGroup) this.getView());
     }*/
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        location=new ArrayList<>();
-         mDataset = new ArrayList<>();
+        location = new ArrayList<>();
+        mDataset = new ArrayList<>();
         mDataset2 = new ArrayList<>();
         ArticleTitle=new ArrayList<>();
         location.add("深圳－羅湖站");
@@ -176,7 +202,6 @@ public class MainFragment extends Fragment {
         ArticleImagerow[1]=R.drawable.article2;
         ArticleImagerow[2]=R.drawable.article3;
         ArticleImagerow[3]=R.drawable.article4;
-
     }
 
     @Override
@@ -188,14 +213,13 @@ public class MainFragment extends Fragment {
 
         Toolbar toolbar=view.findViewById(R.id.toolbar);
 
-
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getActivity().getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         int height = displayMetrics.heightPixels;
         int width = displayMetrics.widthPixels;
         dots = (LinearLayout) view.findViewById(R.id.Dots);
         viewPager = (ViewPager) view.findViewById(R.id.viewPager);
-        viewpager viewPagerAdapter = new viewpager(view.getContext());
+        viewpager viewPagerAdapter = new viewpager(view.getContext(),autoScrollImages);
         viewPager.setAdapter(viewPagerAdapter);
         viewPager.getLayoutParams().height = (int) (height / 3);
         viewPager.getLayoutParams().width=width;
@@ -203,8 +227,6 @@ public class MainFragment extends Fragment {
         dotsview = new ImageView[dotscount];
 
         //code for promoting_card start
-
-        //setContentView(R.layout.fragment_main);
         myviewPager=(ViewPager)view.findViewById(R.id.myview);
         myAdapter=new MainPromocardAdapter(view.getContext());
         myviewPager.setAdapter(myAdapter);
@@ -217,6 +239,10 @@ public class MainFragment extends Fragment {
             params.setMargins(8, 0, 8, 0);
             dots.addView(dotsview[i], params);
         }
+
+
+
+
         dotsview[0].setImageDrawable(ContextCompat.getDrawable(view.getContext(), R.drawable.active_dot));
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -230,16 +256,18 @@ public class MainFragment extends Fragment {
                     dotsview[i].setImageDrawable(ContextCompat.getDrawable(view.getContext(), R.drawable.nonactive_dot));
                 }
                 dotsview[position].setImageDrawable(ContextCompat.getDrawable(view.getContext(), R.drawable.active_dot));
+                currentIndex = position;
             }
 
             @Override
             public void onPageScrollStateChanged(int state) {
 
             }
-            //bottomBar start
 
-            //bottomBar end
+
+
         });
+
 
 
 
@@ -275,6 +303,8 @@ public class MainFragment extends Fragment {
         mAdapter2 = new MainAdapter(view.getContext(), mDataset2, 1,Imagerow);
         mRecyclerView2.setAdapter(mAdapter2);
 
+
+
       /*  searchbarbutton = (ImageView) view.findViewById(R.id.search_bar);
         searchbarbutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -304,11 +334,25 @@ public class MainFragment extends Fragment {
                     }
                 });
 
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                Message message = new Message();
+                message.what = UPDATE_PAGER;
+                if (currentIndex == autoScrollImages.length - 1) {
+                    currentIndex = -1;
+                }
 
 
+                message.arg1=currentIndex+1;
+                Log.d("msg11",String.valueOf(currentIndex));
+                mHandler.sendMessage(message);
+            }
+        }, 3000, 3000);
 
-return view;
+            return view;
     }
+
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
@@ -316,6 +360,7 @@ return view;
             mListener.onListFragmentInteraction(this.getTag(),uri);
         }
     }
+    //mylam timer
 
     @Override
     public void onAttach(Context context) {

@@ -21,8 +21,10 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AutoCompleteTextView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RatingBar;
@@ -92,7 +94,7 @@ public class MainActivity extends AppCompatActivity implements OnListFragmentInt
                                selectedFragment = mainFragment;
                                break;
                            case R.id.action_item4:
-                               selectedFragment = ItemFourFrag.newInstance();
+                               selectedFragment = ItemThreeFrag.newInstance();
                                break;
                            case R.id.action_item5:
                                selectedFragment = ItemFourFrag.newInstance();
@@ -147,7 +149,41 @@ public class MainActivity extends AppCompatActivity implements OnListFragmentInt
         }
 
     }
+    @Override
+    public void onBackPressed()
+    {
+        super.onBackPressed();
+        View vo = getCurrentFocus();
+        if (vo instanceof AutoCompleteTextView) {
+            if(vo!=null)
+                    vo.clearFocus();
 
+
+            }
+          // optional depending on your needs
+
+    }
+    /*@Override
+    public boolean dispatchTouchEvent(MotionEvent event) {
+        View vo = getCurrentFocus();
+        if (vo instanceof AutoCompleteTextView) {
+            int scrcoords[] = new int[2];
+            vo.getLocationOnScreen(scrcoords);
+            // calculate the relative position of the clicking position against the position of the view
+            float x = event.getRawX() - scrcoords[0];
+            float y = event.getRawY() - scrcoords[1];
+
+            // check whether action is up and the clicking position is outside of the view
+            if (event.getAction() == MotionEvent.ACTION_UP
+                    && (x < 0 || x > vo.getRight() - vo.getLeft()
+                    || y < 0 || y > vo.getBottom() - vo.getTop())) {
+                if (vo.getOnFocusChangeListener() != null) {
+                    vo.getOnFocusChangeListener().onFocusChange(vo, false);
+                }
+            }
+        }
+        return super.dispatchTouchEvent(event);
+    }*/
 
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.

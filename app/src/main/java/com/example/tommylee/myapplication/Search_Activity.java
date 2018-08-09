@@ -1,4 +1,4 @@
-package com.example.tommylee.myapplication;
+/*package com.example.tommylee.myapplication;
 
 import android.content.ClipData;
 import android.content.Intent;
@@ -306,3 +306,4 @@ public void onBackPressed(){
     }
 
 
+*/

@@ -19,9 +19,10 @@ import android.util.Log;
 public class viewpager extends PagerAdapter{
     private Context context;
     private LayoutInflater layoutInflater;
-    private Integer[] images={R.drawable.spa,R.drawable.spa1,R.drawable.spa2};
-    public viewpager(Context context){
+    private Integer[] images;
+    public viewpager(Context context,Integer[] images){
         this.context=context;
+        this.images=images;
     }
     @Override
     public int getCount(){

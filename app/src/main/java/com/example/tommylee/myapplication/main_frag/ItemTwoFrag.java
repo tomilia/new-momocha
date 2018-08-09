@@ -1,5 +1,6 @@
 package com.example.tommylee.myapplication.main_frag;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -7,6 +8,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
@@ -22,13 +24,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.AutoCompleteTextView;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.tommylee.myapplication.DataFetch;
 import com.example.tommylee.myapplication.R;
@@ -36,7 +41,6 @@ import com.example.tommylee.myapplication.Result_Page_Activity;
 import com.example.tommylee.myapplication.SavedResultAdapter;
 //import com.example.tommylee.myapplication.SearchResultAdapter;
 import com.example.tommylee.myapplication.SearchResultAdapter;
-import com.example.tommylee.myapplication.Search_Activity;
 import com.example.tommylee.myapplication.SmartScreen_Activity;
 import com.example.tommylee.myapplication.detail.Detail_Activity;
 import com.greenfrvr.hashtagview.HashtagView;
@@ -70,6 +74,7 @@ public class ItemTwoFrag extends Fragment {
     ArrayList<DataFetch> productResults = new ArrayList<DataFetch>();
     // Listview Adapter
     AutoCompleteTextView edit;
+    FrameLayout frag;
     private ProgressBar spinner;
     public static ItemTwoFrag newInstance() {
         ItemTwoFrag fragment = new ItemTwoFrag();
@@ -81,11 +86,6 @@ public class ItemTwoFrag extends Fragment {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
 
-    }
-
-    public void onBackPressed(){
-        edit.clearFocus();
-        super.getActivity().onBackPressed();
 
     }
     @Override
@@ -100,7 +100,32 @@ public class ItemTwoFrag extends Fragment {
         ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(false);
         ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         ImageButton but=view.findViewById(R.id.problem);
-
+        but.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment f = getChildFragmentManager().findFragmentById(R.id.search_page_frag);
+                Log.d("fragmenttt",f.toString());
+                if(f instanceof Search_unfocus_frag)
+                {
+                    FragmentTransaction ft=getChildFragmentManager().beginTransaction();
+                    search_focus_frag ff=new search_focus_frag();
+                    ft.replace(R.id.search_page_frag,ff);
+                    ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                    ft.addToBackStack(null);
+                    ft.commit();
+                }
+                else if (f instanceof search_focus_frag)
+                {
+                    FragmentTransaction ft=getChildFragmentManager().beginTransaction();
+                    Search_unfocus_frag ff=new Search_unfocus_frag();
+                    ft.replace(R.id.search_page_frag,ff);
+                    ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                    ft.addToBackStack(null);
+                    ft.commit();
+                }
+            }
+        });
+/*
         lv = view.findViewById(R.id.list_view);
         LayoutInflater myinflater = getLayoutInflater();
         ViewGroup myHeader = (ViewGroup)myinflater.inflate(R.layout.listviewheaderlayout, lv, false);
@@ -108,9 +133,9 @@ public class ItemTwoFrag extends Fragment {
         Hawk.init(ItemTwoFrag.this.getContext()).build();
         spinner=view.findViewById(R.id.progressBar);
         spinner.setVisibility(View.GONE);
-
+*/
         edit=view.findViewById(R.id.searchmain);
-
+        frag=view.findViewById(R.id.search_page_frag);
         layout= view.findViewById(R.id.table);//Can also be done in xml by android:orientation="vertical"
        // ItemTwoFrag.myTask hotsearchregex=new ItemTwoFrag.myTask();
        // hotsearchregex.execute("p");
@@ -126,20 +151,38 @@ public class ItemTwoFrag extends Fragment {
         layout2=view.findViewById(R.id.table2);//Can also be done in xml by android:orientation="vertical"
 
         final ListView recentr=view.findViewById(R.id.resultrecent);
+/*
         for(int a=0;a<Hawk.count();a++)
             recent.add(a,Hawk.get(String.valueOf(a)).toString());
         final SavedResultAdapter adapter = new SavedResultAdapter(view.getContext(),recent);
 
         recentr.setAdapter(adapter);
         recentr.setVisibility(View.VISIBLE);
-
+  */
+        FragmentTransaction ft=getChildFragmentManager().beginTransaction();
+        Search_unfocus_frag ff=new Search_unfocus_frag();
+        ft.replace(R.id.search_page_frag,ff);
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        ft.addToBackStack(null);
+        ft.commit();
         edit.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View arg0, boolean hasfocus) {
                 if (hasfocus) {
                     Log.e("TAG", "e1 focused");
+                    edit.setCursorVisible(true);
+                    FragmentTransaction ft=getChildFragmentManager().beginTransaction();
+                    search_focus_frag ff=new search_focus_frag();
+                    ft.replace(R.id.search_page_frag,ff);
+                    ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                    ft.addToBackStack(null);
+                    ft.commit();
+                    frag.requestFocus();
+
                 } else {
                     Log.e("TAG", "e1 not focused");
+
+                    edit.setCursorVisible(false);
                 }
             }
         });
@@ -167,7 +210,8 @@ public class ItemTwoFrag extends Fragment {
                 return false;
             }
         });
-        edit.requestFocus();
+
+
         edit.setOnKeyListener(new View.OnKeyListener() {
 
             @Override
@@ -175,7 +219,7 @@ public class ItemTwoFrag extends Fragment {
                 Log.d("hahah",String.valueOf(i));
                 if(i == KeyEvent.KEYCODE_BACK) {
 
-                    edit.clearFocus();
+
                     return true;
                 }
                 else return false;
@@ -201,7 +245,7 @@ public class ItemTwoFrag extends Fragment {
             @Override
             public void afterTextChanged(Editable arg0) {
                 // TODO Auto-generated method stub
-
+/*
                 if (arg0.length() > 0) {
 
                     //     ItemTwoFrag.myTask task = new ItemTwoFrag.myTask();
@@ -221,10 +265,13 @@ public class ItemTwoFrag extends Fragment {
                     spinner.setVisibility(View.GONE);
                     Log.d("monty", String.valueOf(hotsearch));
                 }
+                */
 
             }
         });
 
+
+/*
         lv.setOnItemClickListener(new ListView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
                 Log.d("test",String.valueOf(id));
@@ -242,6 +289,7 @@ public class ItemTwoFrag extends Fragment {
                 Log.d("scaoc",recent.get(position));
             }
         });
+        */
         return view;
 
     }
@@ -270,6 +318,11 @@ public class ItemTwoFrag extends Fragment {
         onBackPressed();
 
     }*/
+    public void showAlertDialogButtonClicked(View view) {
+
+        Log.d("hello","123");
+
+    }
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
@@ -353,5 +406,23 @@ public class ItemTwoFrag extends Fragment {
 
 
     };*/
+   @Override
+   public void onActivityCreated(Bundle savedInstanceState) {
+       super.onActivityCreated(savedInstanceState);
+       final View root = getActivity().getWindow().getDecorView().findViewById(R.id.coor);
 
+       root.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+           public void onGlobalLayout() {
+               int heightDiff = root.getRootView().getHeight() - root.getHeight();
+               // IF height diff is more then 150, consider keyboard as visible.
+               Log.d("slideactivity", "total " + root.getRootView().getHeight());
+               Log.d("slideactivity", "total " + root.getHeight());
+               Log.d("slideactivity", "heightdiff = " + heightDiff);
+               /*if (heightDiff<934&&edit.hasFocus()){
+                   edit.clearFocus();
+
+               }*/
+           }
+       });
+   }
 }

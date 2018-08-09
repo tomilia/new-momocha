@@ -1,5 +1,12 @@
 <resources>
     <string name="app_name">My Application</string>
+
+    <string-array name="spinner_phone_code">
+        <item>+852</item>
+        <item>+853</item>
+        <item>+86</item>
+    </string-array>
+
     <string name="action_settings">Settings</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
@@ -55,5 +62,6 @@
     <string name="title_activity_detail_">Detail_Activity</string>
     <string name="title_activity_setting">SettingActivity</string>
     <string name="title_activity_traffic_">Traffic_Activity</string>
+
 </resources>
 

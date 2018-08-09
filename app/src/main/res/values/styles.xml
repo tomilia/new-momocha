@@ -1,5 +1,4 @@
 <resources>
-
     <style name="ColoredButton" parent="Widget.AppCompat.Button">
         <item name="colorButtonNormal">#39b275</item>
     </style>
@@ -8,7 +7,7 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorAccent">@color/base</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -58,7 +57,22 @@
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <!-- font-->
+    <style name="msjhbd" parent="android:TextAppearance">
 
+        <item name="fontPath">msjhbd.ttc</item>
+    </style>
+    <style name="msjh" parent="android:TextAppearance">
+
+        <item name="fontPath">msjh.ttc</item>
+    </style>
+    <style name="mid" parent="android:TextAppearance">
+
+        <item name="fontPath">GenJyuuGothicL-Monospace-Medium.ttf</item>
+    </style>
+    <style name="strong" parent="android:TextAppearance">
+
+        <item name="fontPath">GenJyuuGothicL-Monospace-bold.ttf</item>
+    </style>
     <style name="normal" parent="android:TextAppearance">
 
         <item name="fontPath">GenJyuuGothicL-Monospace-Normal.ttf</item>

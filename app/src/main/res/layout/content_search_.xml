@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -16,27 +17,37 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context="content_search_">
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/content_search_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"/>
+        </RelativeLayout>
         <LinearLayout
             android:id="@+id/table"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"/>
 
-            <TextView
-                android:id="@+id/hot"
+        <TextView
+            android:id="@+id/recent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="最近搜尋"
+            android:paddingLeft="8dp"
+            android:background="@drawable/border"
+            android:textColor="#346060"
+            android:textSize="16sp"
+            android:textAppearance="@style/normal"
 
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/border"
-                android:text="熱門"
-                android:paddingLeft="8dp"
-                android:textColor="#346060"
-                android:textSize="16sp"
-                android:textAppearance="@style/normal"  />
+            />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -71,17 +82,19 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/recent"
+                android:id="@+id/hot"
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginStart="20dp"
-                android:text="最近搜尋"
-                android:paddingLeft="8dp"
                 android:background="@drawable/border"
+                android:layout_marginTop="7dp"
+                android:layout_marginLeft="10dp"
+                android:text="熱門"
+                android:paddingLeft="8dp"
                 android:textColor="#346060"
                 android:textSize="16sp"
-                android:textAppearance="@style/normal" />
+                android:textAppearance="@style/normal"  />
+
 
             <ListView
                 android:id="@+id/resultrecent"
@@ -92,19 +105,9 @@
                 android:focusable="true" />
 
         </LinearLayout>
-    </LinearLayout>
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyleLarge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
 
-        android:layout_marginTop="150dp"
-        android:progressDrawable="@drawable/circular_progress_bar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
 
     <ListView
         android:id="@+id/list_view"

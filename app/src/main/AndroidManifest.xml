@@ -22,7 +22,7 @@
         <activity
             android:name=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="adjustPan">
+            android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -41,6 +41,34 @@
         <activity
             android:name=".SmartScreen_Activity"
             android:label="@string/title_activity_smart_screen_"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".registration"
+            android:label="註冊"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".registration_verify"
+            android:label="短信驗證"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".registration_set_password"
+            android:label="密碼設定"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".registration_email"
+            android:label="電郵註冊"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name="registration_phone_verify"
+            android:label="密碼設定"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".registration_forget"
+            android:label="忘記密碼"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".registration_forget_email"
+            android:label="忘記密碼2"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".Result_Page_Activity"
