@@ -1,102 +1,72 @@
 package com.example.tommylee.myapplication;
 
 import android.content.Context;
-import android.graphics.Typeface;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.orhanobut.hawk.Hawk;
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
-/**
- * Created by tommylee on 12/11/2017.
- */
+public class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapter.ViewHolder> {
+    private static final String TAG ="search_result_adapter";
 
-public class SearchResultAdapter extends BaseAdapter
-{
-    private LayoutInflater layoutInflater;
+    private ArrayList<String> mImageNames;
+    private ArrayList<String> mImages;
+//    private ArrayList<String> mDist;
+    private Context mContext;
 
-    private ArrayList<DataFetch> productDetails=new ArrayList<>();
-    int count;
-    Typeface type;
-    Context context;
-
-    //constructor method
-    public SearchResultAdapter(Context context, ArrayList<DataFetch> product_details) {
-
-        layoutInflater = LayoutInflater.from(context);
-
-        this.productDetails=product_details;
-        this.count= product_details.size();
-        this.context = context;
-
-
+    public SearchResultAdapter(Context context, ArrayList<String>ImageNames,ArrayList<String> Images,ArrayList<String> Dists){
+        mImageNames = ImageNames;
+        mImages = Images;
+//        mDist = Dists;
+        mContext = context;
+    }
+    @Override
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.search_result_template, parent,false);
+        ViewHolder holder = new ViewHolder(view);
+        return holder;
     }
 
     @Override
-    public int getCount() {
-        return productDetails.size();
+    public void onBindViewHolder(ViewHolder holder,final int position) {
+        Log.d(TAG,"onBindViewHolder: called.");
+
+        Glide.with(mContext)
+                .asBitmap()
+                .load(mImages.get(position))
+                .into(holder.image);
+        holder.imageName.setText(mImageNames.get(position));
+        //holder.dist.setText(mDist.get(position));
+
     }
+
+
+
 
     @Override
-    public Object getItem(int arg0) {
-        return productDetails.get(arg0);
+    public int getItemCount(){
+        return mImageNames.size();
     }
-
-    @Override
-    public long getItemId(int arg0) {
-        return arg0;
-    }
-
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent)
-    {
-
-        ViewHolder holder;
-        DataFetch tempProduct;
-
-        Log.d("mommy",String.valueOf(position));
-        try {
-           tempProduct = productDetails.get(position);
+    public class ViewHolder extends RecyclerView.ViewHolder{
+        ImageView image;
+        TextView imageName;
+  //      TextView dist;
+        RelativeLayout parentLayout;
+        public ViewHolder(View itemView){
+            super(itemView);
+            image = itemView.findViewById(R.id.imageView2);
+            imageName = itemView.findViewById(R.id.shopname);
+    //        dist = itemView.findViewById(R.id.district);
+            parentLayout = itemView.findViewById(R.id.parent_layout);
         }
-        catch(IndexOutOfBoundsException e){
-            Log.d("haha","bugs");
-            tempProduct=null;
     }
-        if (convertView == null)
-        {
-            convertView = layoutInflater.inflate(R.layout.list_item, null);
-            holder = new ViewHolder();
-            holder.product_name = (TextView) convertView.findViewById(R.id.product_name);
-            holder.product_mrp = (TextView) convertView.findViewById(R.id.product_mrp);
-
-            convertView.setTag(holder);
-        }
-        else {
-            holder = (ViewHolder) convertView.getTag();
-        }
-        if(tempProduct!=null) {
-            holder.product_name.setText(tempProduct.getDescription());
-
-            holder.product_mrp.setText(tempProduct.getImage_link());
-        }
-
-        notifyDataSetChanged();
-        return convertView;
-    }
-
-    static class ViewHolder
-    {
-        TextView product_name;
-        TextView product_mrp;
-
-
-    }
-
 }
-

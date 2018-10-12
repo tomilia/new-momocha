@@ -1,12 +1,12 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\c15-02\Documents\yeah\Momo-android-master\Libraries\AndroidManifest.xml:3:1-9:12
-INJECTED from C:\Users\c15-02\Documents\yeah\Momo-android-master\Libraries\AndroidManifest.xml:3:1-9:12
-INJECTED from C:\Users\c15-02\Documents\yeah\Momo-android-master\Libraries\AndroidManifest.xml:3:1-9:12
-INJECTED from C:\Users\c15-02\Documents\yeah\Momo-android-master\Libraries\AndroidManifest.xml:3:1-9:12
-INJECTED from C:\Users\c15-02\Documents\yeah\Momo-android-master\Libraries\AndroidManifest.xml:3:1-9:12
-INJECTED from C:\Users\c15-02\Documents\yeah\Momo-android-master\Libraries\AndroidManifest.xml:3:1-9:12
-INJECTED from C:\Users\c15-02\Documents\yeah\Momo-android-master\Libraries\AndroidManifest.xml:3:1-9:12
+ADDED from C:\Users\c15-02\Documents\yeah\Momo-android-master\Libraries\AndroidManifest.xml:3:1-10:16
+INJECTED from C:\Users\c15-02\Documents\yeah\Momo-android-master\Libraries\AndroidManifest.xml:3:1-10:16
+INJECTED from C:\Users\c15-02\Documents\yeah\Momo-android-master\Libraries\AndroidManifest.xml:3:1-10:16
+INJECTED from C:\Users\c15-02\Documents\yeah\Momo-android-master\Libraries\AndroidManifest.xml:3:1-10:16
+INJECTED from C:\Users\c15-02\Documents\yeah\Momo-android-master\Libraries\AndroidManifest.xml:3:1-10:16
+INJECTED from C:\Users\c15-02\Documents\yeah\Momo-android-master\Libraries\AndroidManifest.xml:3:1-10:16
+INJECTED from C:\Users\c15-02\Documents\yeah\Momo-android-master\Libraries\AndroidManifest.xml:3:1-10:16
 	package
 		ADDED from C:\Users\c15-02\Documents\yeah\Momo-android-master\Libraries\AndroidManifest.xml:4:5-37
 		INJECTED from C:\Users\c15-02\Documents\yeah\Momo-android-master\Libraries\AndroidManifest.xml
@@ -25,3 +25,7 @@ uses-sdk
 ADDED from C:\Users\c15-02\Documents\yeah\Momo-android-master\Libraries\AndroidManifest.xml:8:5-43
 	android:minSdkVersion
 		ADDED from C:\Users\c15-02\Documents\yeah\Momo-android-master\Libraries\AndroidManifest.xml:8:15-40
+uses-permission#android.permission.INTERNET
+ADDED from C:\Users\c15-02\Documents\yeah\Momo-android-master\Libraries\AndroidManifest.xml:9:5-66
+	android:name
+		ADDED from C:\Users\c15-02\Documents\yeah\Momo-android-master\Libraries\AndroidManifest.xml:9:22-64

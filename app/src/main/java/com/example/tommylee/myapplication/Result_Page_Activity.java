@@ -1,69 +1,87 @@
 package com.example.tommylee.myapplication;
 
-
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import java.lang.reflect.Field;
 
 
 public class Result_Page_Activity extends AppCompatActivity {
     String s,url;
+    private TabLayout mTabLayout;
+    View view;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        setContentView(R.layout.activity_result__page_);
         try{
             url=getIntent().getStringExtra("url");
         }
-        catch(Exception e){
-
-
-        }
+        catch(Exception e){        }
         Bundle bundle = new Bundle();
         bundle.putString("querys", url);
-        ResultFragment fragobj = new ResultFragment();
+        final ResultFragment fragobj = new ResultFragment();
 
         fragobj.setArguments(bundle);
-
         getFragmentManager().beginTransaction().add(R.id.result_frag,fragobj).commit();
-        setContentView(R.layout.activity_result__page_);
 
-// set Fragmentclass Arguments
+        mTabLayout = (TabLayout) findViewById(R.id.tabLayout);
+        mTabLayout.addTab(mTabLayout.newTab().setText("默認排序"));
+        mTabLayout.addTab(mTabLayout.newTab().setText("評分"));
+        mTabLayout.addTab(mTabLayout.newTab().setText("價格"));
+        mTabLayout.addOnTabSelectedListener(
+            new TabLayout.OnTabSelectedListener() {
+                @Override
+                public void onTabSelected(TabLayout.Tab tab) {
+                    //do stuff here
+                    Log.d("select tab", String.valueOf(tab.getPosition()));
+                    switch (tab.getPosition()) {
+                        case 0:
+                            fragobj.reloadData("default");
+                        break;
+                        case 1:
+                            fragobj.reloadData("popular");
+                            break;
+                        case 2:
+                            fragobj.reloadData("price");
+                            break;
+                    }
+                }
+                @Override
+                public void onTabUnselected(TabLayout.Tab tab) {
+                }
 
-        TextView marque=(TextView)findViewById(R.id.marquee);
-        marque.setSelected(true);
+                @Override
+                public void onTabReselected(TabLayout.Tab tab) {
+                }
 
-        Spinner spinner = (Spinner) findViewById(R.id.resultfillspinner1);
-// Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.popuarray, android.R.layout.simple_spinner_item);
-// Specify the layout to use when the list of choices appears
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-// Apply the adapter to the spinner
-        spinner.setAdapter(adapter);
+            }
+    );
+      //  Result_Page_Adapter = new Result_Page_Adapter();
 
         }
     public void onSupportNavigateUp2(View view) {
         onBackPressed();
         getIntent().removeExtra("url");
-
     }
-    public void FilterClick(View view){
-        Intent intent = new Intent(getApplicationContext(), SmartScreen_Activity.class);
-        intent.putExtra("keyword",url);
-
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK );
-        startActivity(intent);
-    }
-    }
+}
 
 
 

@@ -66,13 +66,10 @@ public class search_focus_frag extends Fragment {
         return fragment;
     }
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
-
-
 
         title = new ArrayList<>();
         subtitle = new ArrayList<>();
@@ -107,8 +104,6 @@ public class search_focus_frag extends Fragment {
         title.add("2ZexaL");
         tImage.add("https://i.redd.it/k98uzl68eh501.jpg");
         title.add("2Delta");
-
-
     }
 
     @Override
@@ -145,98 +140,7 @@ public class search_focus_frag extends Fragment {
 
         recentr.setAdapter(adapter);
         recentr.setVisibility(View.VISIBLE);
-/*
-        edit.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View arg0, boolean hasfocus) {
-                if (hasfocus) {
-                    Log.e("TAG", "e1 focused");
-                } else {
-                    Log.e("TAG", "e1 not focused");
-                }
-            }
-        });
 
-        edit.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            public boolean onEditorAction(TextView v, int actionId,
-                                          KeyEvent event) {
-                Log.d("texthahah", String.valueOf(actionId));
-                if (actionId == EditorInfo.IME_ACTION_GO && !edit.getText().toString().equals("")) {
-
-                    recent.add((int) (Hawk.count()), edit.getText().toString());
-                    Hawk.put(String.valueOf((int) Hawk.count()), edit.getText().toString());
-                    for (int x = 0; x < Hawk.count(); x++)
-                        Log.d("xmen", x + " " + Hawk.get(String.valueOf(x)).toString());
-                    Log.d("spalachi", String.valueOf(Hawk.count()) + " " + String.valueOf(recent.size()));
-
-                    Intent intent = new Intent(((AppCompatActivity) getActivity()).getApplicationContext(), Result_Page_Activity.class);
-
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    intent.putExtra("url", uriBuilder(edit.getText().toString(), 0));
-                    startActivity(intent);
-                    return true;
-                }
-
-                return false;
-            }
-        });
-        edit.requestFocus();
-        edit.setOnKeyListener(new View.OnKeyListener() {
-
-            @Override
-            public boolean onKey(View view, int i, KeyEvent keyEvent) {
-                Log.d("hahah", String.valueOf(i));
-                if (i == KeyEvent.KEYCODE_BACK) {
-
-                    edit.clearFocus();
-                    return true;
-                } else return false;
-            }
-        });
-        edit.addTextChangedListener(new TextWatcher() {
-
-            @Override
-            public void onTextChanged(CharSequence cs, int arg1, int arg2, int arg3) {
-                // When user changed the Text
-
-
-            }
-
-            @Override
-            public void beforeTextChanged(CharSequence arg0, int arg1, int arg2,
-                                          int arg3) {
-                // TODO Auto-generated method stub
-
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable arg0) {
-                // TODO Auto-generated method stub
-
-                if (arg0.length() > 0) {
-
-                    //     ItemTwoFrag.myTask task = new ItemTwoFrag.myTask();
-                    spinner.setVisibility(View.VISIBLE);
-                    lv.setVisibility(View.GONE);
-                    checknull = false;
-                    //   task.execute(arg0.toString());
-                    layout.setVisibility(View.GONE);
-                    hotsearch = false;
-                    layout2.setVisibility(View.GONE);
-                } else {
-                    checknull = true;
-                    lv.setVisibility(View.GONE);
-                    layout.setVisibility(View.VISIBLE);
-                    layout2.setVisibility(View.VISIBLE);
-                    hotsearch = true;
-                    spinner.setVisibility(View.GONE);
-                    Log.d("monty", String.valueOf(hotsearch));
-                }
-
-            }
-        });
-*/
         lv.setOnItemClickListener(new ListView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
                 Log.d("test", String.valueOf(id));

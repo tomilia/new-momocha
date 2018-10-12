@@ -95,12 +95,11 @@
                 android:textSize="16sp"
                 android:textAppearance="@style/normal"  />
 
-
             <ListView
                 android:id="@+id/resultrecent"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="120dp"
                 android:clickable="true"
                 android:focusable="true" />
 
@@ -111,12 +110,10 @@
 
     <ListView
         android:id="@+id/list_view"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
         android:focusable="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/linearLayout" />
+        />
 
 </android.support.constraint.ConstraintLayout>

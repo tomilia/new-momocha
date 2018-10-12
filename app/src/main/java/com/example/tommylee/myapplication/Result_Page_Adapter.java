@@ -1,5 +1,6 @@
 package com.example.tommylee.myapplication;
 
+import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -34,7 +35,9 @@ public class Result_Page_Adapter extends RecyclerView.Adapter<Result_View_Holder
             inflater=LayoutInflater.from(context);
             mResults=result;
         }
-        @Override
+
+
+    @Override
         public Result_View_Holder onCreateViewHolder(ViewGroup parent, int viewType) {
             View v=inflater.inflate(R.layout.result_list_view, parent, false);
 

@@ -1,8 +1,15 @@
 package com.example.tommylee.myapplication;
 
+import android.content.Context;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import java.lang.reflect.Field;
 
 /**
  * Created by Carson_Ho on 16/7/22.
@@ -34,4 +41,8 @@ public class registrate_adapter extends FragmentPagerAdapter {
     public CharSequence getPageTitle(int position) {
         return mTitles[position];
     }
+
+
+
+
 }

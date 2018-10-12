@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -12,11 +12,8 @@
         android:id="@+id/applayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-
         android:theme="@style/ThemeOverlay.AppCompat.Dark"
         >
-
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/result_toolbar"
@@ -30,17 +27,13 @@
 
             <RelativeLayout
                 android:id="@+id/search_layout"
-
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 >
-
 
                 <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentTop="true"
@@ -48,6 +41,7 @@
                     android:layout_marginRight="16dp"
                     android:background="@color/colorPrimary"
                     android:onClick="FilterClick"
+                    android:tint="@color/base"
                     app:srcCompat="@drawable/filter" />
 
                 <ImageButton
@@ -58,6 +52,7 @@
                     android:layout_alignParentStart="true"
                     android:onClick="onSupportNavigateUp2"
                     android:layout_centerVertical="true"
+                    android:tint="@color/base"
                     android:background="@color/colorPrimary"
                     app:srcCompat="@drawable/back" />
 
@@ -70,53 +65,31 @@
                     android:textColor="@color/colorAccent"
                     android:gravity="center"
                    />
-
             </RelativeLayout>
-
         </android.support.v7.widget.Toolbar>
-
-
-
-        <RelativeLayout
-            android:id="@+id/search_box"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/search_toolbar"
-            >
-
-            <AutoCompleteTextView
-                android:id="@+id/searchmain"
-                android:layout_width="match_parent"
-                android:drawableStart="@drawable/searchin2"
-                android:drawableLeft="@drawable/searchin2"
-                android:drawablePadding="10dp"
-                android:layout_height="45dp"
-
-                android:layout_centerVertical="true"
-                android:layout_gravity="center"
-                android:background="@drawable/round_button"
-                android:hint="Search!"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginBottom="15dp"
-
-                android:scrollHorizontally="true"
-                android:singleLine="true"
-                android:textColor="#aaaaaa"
-                />
-
-        </RelativeLayout>
-
     </android.support.design.widget.AppBarLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/applayout"
+        android:orientation="vertical">
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="#fff"
+            app:tabIndicatorColor="@color/base"
+            app:tabIndicatorHeight="1dp"
+            app:tabTextColor="@color/base"
+            app:tabSelectedTextColor="@color/text"
+            app:tabPadding="10dp"
+            app:tabMode="fixed"
+            app:tabGravity="center"
+            app:tabTextAppearance="@style/MyTabLayoutTextAppearance"/>
 
-    <include layout="@layout/content_result__page_" />
+            <include layout="@layout/content_result__page_"/>
+    </LinearLayout>
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
 
-</android.support.design.widget.CoordinatorLayout>
+
+</RelativeLayout>
