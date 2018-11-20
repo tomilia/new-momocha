@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="3dp"
+    android:layout_marginBottom="5dp"
+    android:layout_marginLeft="3dp"
+    android:layout_marginRight="3dp"
+    app:cardElevation="3dp"
+    app:cardPreventCornerOverlap="true"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:src="@drawable/roundrec"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/article4" />
+
+            <ImageButton
+                android:id="@+id/heart"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="top|right"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@null"
+                app:srcCompat="@drawable/heart" />
+        </FrameLayout>
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="3"
+            android:orientation="horizontal"
+            android:rowCount="2"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:paddingBottom="8dp"
+
+            >
+            　　
+            <TextView
+                android:id="@+id/shopname"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_column="0"
+                android:layout_row="0"
+                android:paddingBottom="3dp"
+                android:fontFamily="@font/genjyuugothiclmonospacelight"
+                android:text="ShopName"
+                android:textSize="26sp" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="1"
+                android:layout_column="0"
+                android:orientation="horizontal"
+                android:layout_gravity="center_vertical"
+                >
+                <TextView
+                    android:id="@+id/station"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:textColor="#229922"
+                    android:text="老街站"
+                    android:fontFamily="@font/genjyuugothiclmonospacelight"
+                    android:textSize="16dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="・">
+
+                </TextView>
+                <TextView
+                    android:id="@+id/street"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/genjyuugothiclmonospacelight"
+                    android:text="和平路"
+                    android:textSize="16dp" />
+            </LinearLayout>
+
+            <!--TextView
+                android:id="@+id/district"
+                android:layout_height="wrap_content"
+                android:layout_width="260dp"
+                android:layout_column="1"
+                android:layout_row="1"
+                android:layout_columnSpan="3"
+                android:text="district"
+                android:textSize="20dp"
+                /-->
+            　　
+            <!--TextView
+                android:id="@+id/price"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_column="2"
+                android:layout_row="0"
+                android:layout_rowSpan="1"
+                android:layout_gravity="right"
+                android:text="價錢"
+                android:textSize="16dp" /-->
+
+          <!--  <RatingBar
+                android:id="@+id/ratingBar2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:paddingTop="10dp"
+                android:layout_column="2"
+                android:layout_row="0"
+                android:numStars="5"
+                android:stepSize="1.0"
+                android:rating="3"
+                android:isIndicator="true"
+                style="@style/Widget.AppCompat.RatingBar.Small"
+                android:theme="@style/SmallRatingBar"/>
+                -->
+            <LinearLayout
+                android:layout_gravity="right|center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="2"
+                android:layout_row="0"
+                >
+                <TextView
+                    android:fontFamily="@font/centurygothic"
+                    android:textStyle="bold"
+                    android:id="@+id/marks"
+                    android:textColor="#3fa3a3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18dp"
+                    android:text="4.8"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/centurygothic"
+                    android:textStyle="bold"
+                    android:text="/"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/centurygothic"
+                    android:textStyle="bold"
+                    android:text="5"/>
+            </LinearLayout>
+            <TextView
+                android:id="@+id/Block"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_column="2"
+                android:layout_row="1"
+
+                android:layout_gravity="right"
+                android:drawableLeft="@drawable/usingtimes"
+                android:text="1065"
+                android:textSize="14sp" />
+
+
+
+
+
+        </GridLayout>
+    </LinearLayout>
+</android.support.v7.widget.CardView>

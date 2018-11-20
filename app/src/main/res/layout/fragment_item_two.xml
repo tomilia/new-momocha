@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/coor">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/applayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        >
+
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/search_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="#ffffff"
+            android:contentInsetLeft="0dp"
+            android:contentInsetStart="0dp"
+            app:contentInsetLeft="0dp"
+            app:contentInsetStart="0dp">
+            <LinearLayout
+                android:id="@+id/tbll"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+
+                android:orientation="vertical"
+                >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:paddingTop="5dp"
+                    android:textSize="35sp"
+                    android:textAppearance="@font/genjyuugothiclmonospacelight"
+                    android:fontFamily="@font/genjyuugothiclmonospacelight"
+                    android:textColor="#6b6b6b"
+                    android:paddingLeft="12dp"
+                    android:text= "搜尋"/>
+
+                <AutoCompleteTextView
+                    android:id="@+id/searchmain"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/roundrec"
+                    android:layout_marginLeft="10dp"
+                    android:paddingLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:focusableInTouchMode="true"
+                    android:hint="搜尋店舖／地址"
+                    android:imeOptions="actionGo"
+                    android:textAppearance="@font/genjyuugothiclmonospacelight"
+                    android:fontFamily="@font/genjyuugothiclmonospacelight"
+                    android:layout_gravity="bottom"
+                    android:singleLine="true"
+                    android:textColor="#aaaaaa"
+                    android:textColorHint="@color/dark_grey"
+                    android:textSize="14dp"
+                    android:textStyle="bold"
+
+                    />
+
+
+
+
+            </LinearLayout>
+        </android.support.v7.widget.Toolbar>
+
+
+
+
+    </android.support.design.widget.AppBarLayout>
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#f5f5f5"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        >
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/search_page_frag"/>
+    </android.support.constraint.ConstraintLayout>
+</android.support.design.widget.CoordinatorLayout>

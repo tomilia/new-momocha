@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:id="@+id/parent_layout"
+    android:layout_width="match_parent"
+    android:layout_margin="10dp"
+    android:layout_height="80dp"
+    android:paddingLeft="5dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal">
+    <View
+
+        android:layout_width="5dp"
+        android:layout_height="match_parent"
+        android:background="@android:color/holo_blue_light" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:weightSum="1">
+    <RelativeLayout
+        android:gravity="center_vertical"
+        android:layout_weight="0.5"
+
+        android:layout_marginRight="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+
+            android:id="@+id/txt_item"
+            android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_alignParentStart="true"
+            android:text="TextView"
+            android:fontFamily="@font/genjyuugothiclmonospacelight"
+            android:textColor="#999" />
+
+        <TextView
+
+            android:id="@+id/newprice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:textSize="20sp"
+            android:layout_alignParentEnd="true"
+            android:text="$138"
+            android:fontFamily="@font/centurygothic"
+            android:textColor="#3ca3a2" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:gravity="center_vertical"
+        android:layout_weight="0.5"
+        android:layout_gravity="center"
+        android:layout_marginLeft="10dp"
+
+        android:layout_marginRight="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+
+
+            android:id="@+id/timelimit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:layout_alignParentStart="true"
+            android:text="90分鐘"
+            android:fontFamily="@font/genjyuugothiclmonospacelight"
+            android:textColor="#ccc" />
+
+        <TextView
+
+
+            android:id="@+id/originPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:textSize="14sp"
+            android:layout_alignParentEnd="true"
+            android:text="$220"
+            android:fontFamily="@font/centurygothic"
+            android:textColor="#6b6b6b" />
+    </RelativeLayout>
+    </LinearLayout>
+    </LinearLayout>
